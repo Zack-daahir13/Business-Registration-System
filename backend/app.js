@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes");
+const businessRouter = require("./routes/businessRoutes");
 
 const app = express();
 
@@ -43,8 +44,7 @@ app.use(xss());
 
 // 3) ROUTES
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/business-type", businessTypeRouter);
-app.use("/api/v1/business", businessRegRouter);
+app.use("/api/v1/business", businessRouter);
 
 app.all("*", (req, res, next) => {
   next(
