@@ -77,13 +77,32 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
-exports.logout = (req, res) => {
-  res.cookie("jwt", "loggedout", {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
-  res.status(200).json({ status: "success" });
-};
+exports.logout = catchAsync(async (req, res, next) => {
+  try {
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Ensure cookies are secure in production
+      sameSite:
+        process.env.NODE_ENV === "production" ? "none" : "strict",
+    });
+
+    // Return successful response
+    return res.status(200).json({
+      status: "success",
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    return next(error); // Pass errors to the error handling middleware
+  }
+});
+
+// exports.logout = (req, res) => {
+//   res.cookie("jwt", "loggedout", {
+//     expires: new Date(Date.now() + 10 * 1000),
+//     httpOnly: true,
+//   });
+//   res.status(200).json({ status: "success" });
+// };
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
