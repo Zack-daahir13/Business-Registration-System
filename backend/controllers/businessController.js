@@ -69,7 +69,101 @@ exports.getAllBusinesses = factory.getAll(Business);
 exports.updateBusiness = factory.updateOne(Business);
 exports.deleteBusiness = factory.deleteOne(Business);
 
-// For admin only
+// Aggregation Helper Functions
+
+// Get businesses by status (Approved, Rejected, Pending)
+exports.getBusinessesByStatus = catchAsync(async (req, res, next) => {
+  const { status } = req.params; // Expected: "Approved", "Rejected", or "Pending"
+
+  const businesses = await Business.aggregate([
+    {
+      $match: { status: { $eq: status } }, // Match businesses by status
+    },
+    {
+      $project: {
+        _id: 1,
+        name: 1,
+        type: 1,
+        status: 1,
+        createdAt: 1,
+      }, // Project fields to return
+    },
+    {
+      $sort: { createdAt: -1 }, // Sort by creation date (descending)
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    results: businesses.length,
+    data: { businesses },
+  });
+});
+
+// Get businesses by type (e.g., LLC, Partnership)
+exports.getBusinessesByType = catchAsync(async (req, res, next) => {
+  const { type } = req.params; // Expected: "Sole Proprietorship", "Partnership", "LLC", etc.
+
+  const businesses = await Business.aggregate([
+    {
+      $match: { type: { $eq: type } }, // Match businesses by type
+    },
+    {
+      $project: {
+        _id: 1,
+        name: 1,
+        type: 1,
+        status: 1,
+        createdAt: 1,
+      }, // Project fields to return
+    },
+    {
+      $sort: { createdAt: -1 }, // Sort by creation date (descending)
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    results: businesses.length,
+    data: { businesses },
+  });
+});
+
+// Get total businesses by status (for dashboard cards)
+exports.totalBusinessesByStatus = catchAsync(
+  async (req, res, next) => {
+    const total = await Business.aggregate([
+      {
+        $group: {
+          _id: "$status",
+          total: { $sum: 1 }, // Count businesses per status
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      status: "success",
+      data: { total },
+    });
+  }
+);
+
+// Get total businesses by type (for dashboard cards)
+exports.totalBusinessesByType = catchAsync(async (req, res, next) => {
+  const total = await Business.aggregate([
+    {
+      $group: {
+        _id: "$type",
+        total: { $sum: 1 }, // Count businesses per type
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data: { total },
+  });
+});
 
 // Controller to handle approving a business registration
 exports.approveBusiness = catchAsync(async (req, res, next) => {
