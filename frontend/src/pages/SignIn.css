@@ -1,3 +1,4 @@
+/* General reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,15 +7,15 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url('./assets/img1.png'); 
-  background-size: cover; 
-  background-position: center; 
+  background-image: url('./assets/img1.png'); /* Ku beddel path-ka image-kaaga */
+  background-size: cover; /* Si image-ka loo dhigo mid buuxa */
+  background-position: center; /* Si image-ka u dhexeeyo */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  position: relative; 
+  position: relative; /* Si shucaac loogu daro */
 }
 
 .overlay {
@@ -23,8 +24,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 1; 
+  background: rgba(0, 0, 0, 0.5); /* Madow shucaac ah */
+  z-index: 1; /* Ugu sarreeya waxyaabaha kale */
 }
 
 .app-container {
@@ -34,19 +35,22 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  z-index: 2; 
+  z-index: 2; /* Si form-ka uu u muuqdo sare */
 }
 
 .form-container {
-  position: relative;
-  z-index: 2; 
+  position: relative; /* Si loogu daro foomka */
+  z-index: 2; /* Ugu hooseeya overlay */
   padding: 20px;
-  background: white; 
-  border-radius: 8px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  pointer-events: auto; 
+  background: white; /* Midabka foomka */
+  border-radius: 8px; /* Geesaha oo la qariyo */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hooska foomka */
+  pointer-events: auto; /* Hubi in foomka la taaban karo */
 }
 
+.form-container:hover {
+  transform: scale(1.03);
+}
 
 h1 {
   font-size: 32px;

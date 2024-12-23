@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+  }
+  
+  .form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eef2f7;
+  }
+  
+  .form-container {
+    max-width: 800px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .business-form .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .business-form .form-group {
+    flex: 1;
+  }
+  
+  .business-form .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .business-form .form-group input,
+  .business-form .form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .file-input {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+  }
+  
+  .business-form .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .clear-button {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .clear-button:hover {
+    background: #d32f2f;
+  }
+  
+  .submit-button {
+    background:  #007bff;
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submit-button:hover {
+    background: #388e3c;
+  }
+  
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 20px;
+    }
+  
+    .business-form .form-row {
+      flex-direction: column;
+    }
+  
+    .business-form .form-buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .clear-button, .submit-button {
+      width: 100%;
+    }
+  }
+  .form-group{
+    margin-right: 25px;
+    margin-left: 5px;
+  }
+  
