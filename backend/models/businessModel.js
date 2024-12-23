@@ -30,7 +30,7 @@ const businessSchema = new mongoose.Schema({
     trim: true,
   },
   businessType: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     enum: [
       "Sole Proprietorship",
       "Partnership",
