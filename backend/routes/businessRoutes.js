@@ -33,6 +33,29 @@ router.use(authController.restrictTo("admin")); // Apply admin restriction for t
 // Admin can get all businesses
 router.route("/").get(businessController.getAllBusinesses);
 
+// Admin can get all businesses
+router.route("/").get(businessController.getAllBusinesses);
+
+// Admin can filter businesses by status (approved, pending, rejected)
+router
+  .route("/status/:status")
+  .get(businessController.getBusinessesByStatus);
+
+// Admin can filter businesses by type (Sole Proprietorship, LLC, etc.)
+router
+  .route("/type/:type")
+  .get(businessController.getBusinessesByType);
+
+// Admin can get total count of businesses by status (for dashboard cards)
+router
+  .route("/total/status")
+  .get(businessController.totalBusinessesByStatus);
+
+// Admin can get total count of businesses by type (for dashboard cards)
+router
+  .route("/total/type")
+  .get(businessController.totalBusinessesByType);
+
 // Admin can approve or reject businesses
 router
   .route("/:id/approve")
