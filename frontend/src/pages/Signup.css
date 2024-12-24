@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+/* General reset */
 * {
   margin: 0;
   padding: 0;
@@ -40,15 +39,18 @@ body {
 }
 
 .form-container {
-  position: relative;
+  position: relative; 
   z-index: 2; 
   padding: 20px;
   background: white; 
   border-radius: 8px; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  pointer-events: auto; 
+  pointer-events: auto;
 }
 
+.form-container:hover {
+  transform: scale(1.03);
+}
 
 h1 {
   font-size: 32px;
@@ -116,4 +118,3 @@ button:hover {
     font-size: 16px;
   }
 }
->>>>>>> 0c0b18b6decb40bf9723bed5823accfa048d4fb4
