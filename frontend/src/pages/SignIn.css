@@ -1,4 +1,4 @@
-/* General reset */
+General reset
 * {
   margin: 0;
   padding: 0;
@@ -7,15 +7,16 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url('./assets/img1.png'); /* Ku beddel path-ka image-kaaga */
-  background-size: cover; /* Si image-ka loo dhigo mid buuxa */
-  background-position: center; /* Si image-ka u dhexeeyo */
-  display: flex;
+  /* background-image: url('./assets/img1.png'); 
+  background-size: cover;
+  background-position: center; */
+  /* display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  position: relative; /* Si shucaac loogu daro */
+  position: relative;  */
+  /* Si shucaac loogu daro */
 }
 
 .overlay {
